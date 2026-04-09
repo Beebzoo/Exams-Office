@@ -1,0 +1,1339 @@
+# MAASTRICHT SCIENCE PROGRAMME — EXAM COORDINATION OPERATIONS MANUAL
+
+**Faculty of Science and Engineering · Office of Student Affairs**  
+Paul-Henri Spaaklaan 1, Room B0.005 | 6229 EN Maastricht  
+msp-btr@maastrichtuniversity.nl | msp-exams@maastrichtuniversity.nl  
+*Last updated: 09 April 2026*
+
+---
+
+## How to Use This Manual
+
+This manual is the single source of truth for all exam coordination tasks at MSP. It is designed for both experienced coordinators and new starters.
+
+**Structure:**
+- Section 1: Quick Reference — contacts, systems, SAP transactions, key rules
+- Section 2: Annual Timeline — what happens across the full academic year
+- Section 3: Per-Period Checklist — a relative timeline tied to exam week
+- Section 4: Detailed Procedures — step-by-step guides for every task
+- Section 5: Syllabus / S+ Scheduling Manual — full system guide
+- Section 6: SAP Grading Manual — full grading process
+- Section 7: Email Templates — ready-to-use templates for all communications
+- Section 8: Physical Checklists — exam carts, SPAR boxes, on-day operations
+- Section 9: Operational Templates — print-ready instruction sheets
+
+> ⚠️ **Deadlines in this manual are non-negotiable. Printing and transport logistics especially have zero tolerance for delays. When in doubt, act early.**
+
+> 📌 The academic year runs across five exam periods: P1, P2, P4, and P5 have final exams. P3 and P6 are resit periods. Procedures repeat each period — use the Per-Period Checklist as your recurring guide.
+
+---
+
+## Section 1: Quick Reference
+
+### 1.1 Key Contacts
+
+| Name / Role | Email / Location | When to Contact |
+|---|---|---|
+| Anja Ronken (SSC Scheduler) | toetsen@maastrichtuniversity.nl | Year plan, student numbers, head invigilator coordination, transport logistics |
+| DEXUM | DEXUM-UB@maastrichtuniversity.nl | TestVision support. New coordinator onboarding, folder access, training, manuals |
+| InterUM | surveillantenrooster.interum.eu/admin | Requesting and tracking invigilators for SPAR and resit slots |
+| ANDIDRUK | um.andi-printsolutions.com | All final exam and SPAR exam printing orders |
+| ICTS Support | Front of exam hall during TV exams | Student login issues during TestVision exams. Student must bring UM card |
+| MSP Exams inbox | msp-exams@maastrichtuniversity.nl | Main outgoing address for all exam-related emails to CCs and students |
+| MSP General | msp-btr@maastrichtuniversity.nl | General MSP operations inbox |
+| Leon de Windt (Head) | Via MSP channels | Escalation for late grades, Board of Examiners issues |
+
+---
+
+### 1.2 Systems Access
+
+> 📌 As new exam coordinator: contact DEXUM-UB@maastrichtuniversity.nl to initiate your access setup for all systems below.
+
+| System | URL / Access | Used For |
+|---|---|---|
+| SAP | UM SAP portal (UM account) | Grading, attendance sheets, SPAR data, student registration for resits |
+| TestVision | maastrichtuniversity.testvision.nl/online/developers/ | Digital exams — folders, sessions, monitoring, closing |
+| Syllabus / S+ | syllabus.unimaas.nl (Internet Explorer ONLY) | Scheduling exams and midterms in the official timetable — see Section 5 |
+| Qualtrics | library.maastrichtuniversity.nl/apps-tools/qualtrics/ | Collecting exam format info from CCs each period (personal login, via Lo-FSE) |
+| InterUM | surveillantenrooster.interum.eu/admin | Requesting and tracking invigilators |
+| ANDIDRUK | um.andi-printsolutions.com | Placing printing orders for final exams |
+| MyTimetable | timetable.maastrichtuniversity.nl | Published timetable visible to students and staff |
+| J-Drive (SSC) | J:\SSC | Year plan forms and central scheduling documents |
+| J-Drive (MSP) | J:\FSE_MSP\Secretariat\OSA | All MSP exam files, overviews, templates, attendance sheets |
+| Canvas | UM Canvas (UM account) | Partial grades published by CCs; downloaded by OSA after exam period |
+
+---
+
+### 1.3 SAP Transaction Codes
+
+| Transaction Code | Purpose | Key Inputs |
+|---|---|---|
+| ZPIQ_REP_MOD_SPAR | Get SPAR students per course | Academic session (P1=100, P2=200, P4=400, P5=500) + course code → Execute → scroll right |
+| ZPIQ_REP_STUD_SPAR | Get ALL MSP SPAR students | Execute → find student → scroll right for details. Use when individual accommodation is unclear |
+| ZPIQ_ATT_SHEET | Generate attendance sheets | Event type * → Enter → select exam/course → change columns 12→1 → Execute → saves to C:\temp |
+| ZPIQ_EXPORT_APPR | Export grading sheets to Excel | Course code + AY + period. Do NOT tick 'Exam Only'. Fill appraiser + appraisal date |
+| ZPIQ_IMPORT_APPR | Import completed grades from Excel | Select file from DESKTOP (not server). Always run with 'Test' ticked first, then untick for real run |
+| ZPIQSMFU_CALC | Calculate and publish final grades | Course code → Students → Attendance (check) → Grade Supervisor (check) → Final Result → select all → calculator → Accord → Block → Save |
+| ZPIQSTFU | Update single student grade/attendance | Student number → AY + period → double-click course → adjust → Grade Supervisor row → Final Result → calculator → Accord → Block → Save |
+| ZPIQ_MASS_EXAM | Register resit students | AY = FIRST year of AY. Period = period course took place (NOT resit period). Enter course code → multiple selection → paste student numbers → upload from clipboard → Execute → untick Test → Execute → Save |
+
+---
+
+### 1.4 Key Rules to Know
+
+#### Grading Rules
+
+- All grades on a scale of 1–10, rounded to 1 decimal (nearest decimal)
+- Grades below 5.5 = fail on transcript
+- > ⚠️ **CRITICAL edge case: 5.45–5.49 rounds DOWN to 5.4, which is a FAIL. Do not round up to 5.5.**
+- No participation or missing partial assessment = NG (not graded)
+- Sufficient overall grade + attendance fail = fail on transcript
+- Attendance 70–85%: student may compensate via additional assignment
+- CC deadline: 10 working days from Friday of exam week
+- OSA has 5 additional working days to process after CC deadline
+- Student Portal publication deadline: 15 working days from last exam date
+- Transcripts of all active students must be updated within 1 working day of final publication
+
+#### Exam Rules
+
+- Final exams are standard 2 hours (UM policy). No exceptions
+- All final exams printed by ANDIDRUK. No self-printing permitted. No exceptions
+- Exam carts must be at UM Sports 90 minutes before exam start. Non-negotiable
+- SPAR students are separate — different locations, different boxes
+- Students cannot ask content questions during exam — exam must be triple-checked before printing
+- Open book exam = paper documents only. No internet access
+- Formula sheets must be included in the exam (paper) or within TestVision (digital)
+- Cover sheet must be the first page of every paper exam
+- Every paper exam must have 2 blank extra pages at the end
+
+#### Student Entry Rules (for Invigilators)
+
+- Valid UM card OR official ID/Passport required. Scans and photos not accepted
+- Zero tolerance for lateness — doors close at exact start time. No exceptions
+- No food. Drinks in sealed bottle/cup with lid only
+- Electronic devices of any kind are not allowed (watches, earphones, phones, hats with electronics)
+- One toilet visit permitted per 2-hour exam at UM Sports. Not in the first or last 30 minutes. Exception: SPAR students at PHS and UNS50 are permitted up to 2 toilet visits per exam
+- Students may not leave before 30 minutes after the start of the exam
+- No papers of any kind may leave the exam hall
+
+---
+
+## Section 2: Annual Timeline
+
+The exam cycle repeats every period. The chart below shows the recurring process rhythm.
+
+| When | Task |
+|---|---|
+| February (start of calendar year) | Receive draft exam request form from toetsen@maastrichtuniversity.nl for next AY year plan |
+| End of March | Provide frame schedule to GO (internal deadline for year plan input) |
+| April | Submit completed year plan form to toetsen@maastrichtuniversity.nl |
+| Start of each period (P1/P2/P4/P5) | Send Qualtrics link to CCs for exam format/details. Process responses into planning overview |
+| Start of each period | Publish exam schedule in Syllabus/S+ on UM-wide publication deadline |
+| Start of each period | Send CC inform email with cover sheet, calculator list, deadlines |
+| ~8 weeks before exam week | Create TestVision folders for new courses (if any) |
+| ~8 weeks before exam week | Request SPAR student data from SAP and fill planning overview |
+| ~6 weeks before exam week | Provide final student numbers (non-SPAR) to Anja Ronken / toetsen@ |
+| ~4 weeks before exam week | Request invigilators via InterUM for SPAR (PHS, UNS50) and resit slots (min 3 weeks in advance) |
+| ~4 weeks before exam week | Confirm ESD availability and brief Heather/Gian on their schedules |
+| Monday, 2 weeks before exam week | Exam submission deadline for CCs. Check all submitted exams (cover sheet, space, blank pages) |
+| Tuesday, 2 weeks before exam week | Place printing order with ANDIDRUK. Upload exams + transport overview |
+| Tuesday before exam week | Printed exams delivered to PHS by ANDIDRUK |
+| Thursday/Friday before exam week (~3:30pm) | First exam cart collected from PHS by UTS and taken to UM Sports |
+| During exam week | Monitor TestVision sessions. Manage exam day logistics |
+| After exam week | Close TestVision sessions to allow CC grading |
+| After exam week | Run and send grading sheets to ALL CCs (including non-exam courses and practicals) |
+| 10 working days after exam Friday | CC grade submission deadline |
+| 15 working days after last exam | OSA Student Portal publication deadline |
+| After grades published | Draft resit schedule. Register eligible students in SAP (ZPIQ_MASS_EXAM) |
+| 1 week before resit week | Print resit exams. Send grading sheets. Brief invigilators |
+| During resit week | Run resits at B0.001 (regular) and tutorial rooms (SPAR). Monitor TV resits |
+| After resit week | Process new final grades in SAP. Update grading overview. Reply to CCs |
+
+---
+
+### 2.1 Dated Planning Calendar — 2025–2026
+
+All key operational deadlines for AY 2025–2026. CC grade and OSA publication deadlines are given as working-day formulae because public holidays affect the exact date each period.
+
+| Key Date | P1 | P2 + P1 Resits | P4 + P2/P3 Resits | P5 + P4 Resits | P5 Resit Week |
+|---|---|---|---|---|---|
+| Exam / resit week | 13–17 Oct 2025 | 8–12 Dec 2025 | 16–20 Mar 2026 | 18–22 May 2026 | 15–19 Jun 2026 |
+| Period start | 1 Sep 2025 | 27 Oct 2025 | 26 Jan 2026 | 30 Mar 2026 | — |
+| Timetable published | 14 Aug 2025 | 9 Oct 2025 | 15 Jan 2026 | 19 Mar 2026 | — |
+| CC inform email | ~1 Sep 2025 | ~27 Oct 2025 | ~26 Jan 2026 | ~30 Mar 2026 | — |
+| Invigilator request by | Mon 22 Sep 2025 | Mon 17 Nov 2025 | Mon 23 Feb 2026 | Mon 27 Apr 2026 ⚠️ | Mon 25 May 2026 |
+| Exam submission deadline | Mon 29 Sep 2025 | Mon 24 Nov 2025 | Mon 2 Mar 2026 | Mon 4 May 2026 ⚠️ | Mon 8 Jun 2026 |
+| Printing order (ANDIDRUK) | Tue 30 Sep 2025 | Tue 25 Nov 2025 | Tue 3 Mar 2026 | Tue 5 May 2026 ⚠️ | — |
+| Exams delivered to PHS | Tue 7 Oct 2025 | Tue 2 Dec 2025 | Tue 10 Mar 2026 | Tue 12 May 2026 | — |
+| First cart collected | Thu/Fri 9–10 Oct | Thu/Fri 4–5 Dec | Thu/Fri 12–13 Mar | Thu/Fri 14–15 May ⚠️ | — |
+| Resit exam submission | — | — | — | — | Mon 8 Jun 2026 |
+| CC grade deadline | 10 working days from Fri 17 Oct | 10 working days from Fri 12 Dec | 10 working days from Fri 20 Mar | 10 working days from Fri 22 May | 10 working days from Fri 19 Jun |
+| OSA publish grades by | 15 working days from Fri 17 Oct | 15 working days from Fri 12 Dec | 15 working days from Fri 20 Mar | 15 working days from Fri 22 May | 15 working days from Fri 19 Jun |
+
+> ⚠️ P5 2025–2026 public holidays: Mon 27 Apr (King's Day), Mon 4 May (Bridging Day), Tue 5 May (Liberation Day), Thu 14 May (Ascension Day), Fri 15 May (Bridging Day). These dates fall on or near key P5 deadlines — plan accordingly.
+
+---
+
+### 2.2 Dated Planning Calendar — 2026–2027
+
+| Key Date | P1 | P2 + P1 Resits | P4 + P2/P3 Resits | P5 + P4 Resits | P5 Resit Week |
+|---|---|---|---|---|---|
+| Exam / resit week | 12–16 Oct 2026 | 7–11 Dec 2026 | 15–19 Mar 2027 | 17–21 May 2027 | 14–18 Jun 2027 |
+| Period start | 31 Aug 2026 | 26 Oct 2026 | 25 Jan 2027 | 29 Mar 2027 | — |
+| Timetable published | 13 Aug 2026 | 8 Oct 2026 | 14 Jan 2027 | 18 Mar 2027 | — |
+| CC inform email | ~31 Aug 2026 | ~26 Oct 2026 | ~25 Jan 2027 | ~29 Mar 2027 | — |
+| Invigilator request by | Mon 21 Sep 2026 | Mon 16 Nov 2026 | Mon 22 Feb 2027 | Mon 26 Apr 2027 | Mon 24 May 2027 |
+| Exam submission deadline | Mon 28 Sep 2026 | Mon 23 Nov 2026 | Mon 1 Mar 2027 | Mon 3 May 2027 | Mon 7 Jun 2027 |
+| Printing order (ANDIDRUK) | Tue 29 Sep 2026 | Tue 24 Nov 2026 | Tue 2 Mar 2027 | Tue 4 May 2027 | — |
+| Exams delivered to PHS | Tue 6 Oct 2026 | Tue 1 Dec 2026 | Tue 9 Mar 2027 | Tue 11 May 2027 | — |
+| First cart collected | Thu/Fri 8–9 Oct | Thu/Fri 3–4 Dec | Thu/Fri 11–12 Mar | Thu/Fri 13–14 May | — |
+| Resit exam submission | — | — | — | — | Mon 7 Jun 2027 |
+| CC grade deadline | 10 working days from Fri 16 Oct | 10 working days from Fri 11 Dec | 10 working days from Fri 19 Mar | 10 working days from Fri 21 May | 10 working days from Fri 18 Jun |
+| OSA publish grades by | 15 working days from Fri 16 Oct | 15 working days from Fri 11 Dec | 15 working days from Fri 19 Mar | 15 working days from Fri 21 May | 15 working days from Fri 18 Jun |
+
+> ⚠️ P5 2026–2027: Mon 17 May (Whit Monday) falls on the first day of the exam week. Liberation Day 5 May, Ascension Day 6 May, Bridging Day 7 May also fall within the run-up.
+
+---
+
+## Section 3: Per-Period Checklist
+
+Use this checklist for every exam period (P1, P2, P4, P5). Timings are relative to Exam Week (T = exam week). Adapt actual dates each period.
+
+| When (relative) | Task | Done? |
+|---|---|---|
+| T − 10 weeks | Receive Qualtrics responses from CCs. Process into exam overview document | ☐ |
+| T − 10 weeks | Enter SPAR data from SAP (ZPIQ_REP_MOD_SPAR). Fill planning overview | ☐ |
+| T − 10 weeks | Publish exam and midterm schedule in Syllabus/S+ | ☐ |
+| T − 10 weeks | Send CC inform email (cover sheet, calculator list, submission deadline) | ☐ |
+| T − 10 weeks | Create TestVision folders for any new courses (contact DEXUM if needed) | ☐ |
+| T − 6 weeks | Submit final student numbers (total minus SPAR) to Anja Ronken / toetsen@ | ☐ |
+| T − 4 weeks | Request invigilators via InterUM: SPAR at PHS, SPAR at UNS50, resit at PHS | ☐ |
+| T − 4 weeks | Confirm ESD availability. Brief Heather and Gian with schedule + locations | ☐ |
+| T − 2 weeks (Monday) | Exam submission deadline for CCs | ☐ |
+| T − 2 weeks (Tuesday) | Check all submitted exams: cover sheet, writing space, two blank pages | ☐ |
+| T − 2 weeks (Tuesday) | Return any non-compliant exams. CCs have 24 hours to correct | ☐ |
+| T − 2 weeks (Tuesday/Wednesday) | Place printing order on ANDIDRUK. Upload all exams + transport overview | ☐ |
+| T − 2 weeks | Run attendance sheets in SAP (ZPIQ_ATT_SHEET). Format and save per course | ☐ |
+| T − 1 week (Tuesday) | Confirm printed exams delivered to PHS by ANDIDRUK | ☐ |
+| T − 1 week | Prepare exam carts: exams, attendance sheets, scrap paper, stationery, labels | ☐ |
+| T − 1 week | Prepare SPAR box (PHS): exams, attendance, WC number, scrap, irregularity form, overview, clock | ☐ |
+| T − 1 week | Prepare TV SPAR box (UNS50): attendance, scrap, password reset flyer, checklist, overview | ☐ |
+| T − 1 week | Update Head Invigilator folder | ☐ |
+| T − 4 days (Thu/Fri ~3:30pm) | First exam cart collected by UTS from PHS. Ensure cart is ready | ☐ |
+| Exam week — each morning | Verify cart contents before transport. Ensure next-day cart is ready | ☐ |
+| Exam week | Monitor TestVision sessions live via Session Dashboard | ☐ |
+| Post exam week | Close TestVision sessions (Dashboard → Sessions → switch off slider) | ☐ |
+| Post exam week | Run and send grading sheets (ZPIQ_EXPORT_APPR) to ALL CCs + practical coordinators | ☐ |
+| CC deadline + 5 days | Process all received grades in SAP (ZPIQ_IMPORT_APPR → ZPIQSMFU_CALC) | ☐ |
+| Within 15 working days of last exam | Publish all final grades in Student Portal | ☐ |
+| After grades published | Draft resit schedule based on frame schedule | ☐ |
+| After grades published | Register eligible resit students in SAP (ZPIQ_MASS_EXAM) | ☐ |
+| After grades published | Send resit reply email to CCs with resit date and submission deadline | ☐ |
+| Resit − 1 week | Print resit exams. Prepare boxes (same as procedure 4.14). Brief invigilators | ☐ |
+| Resit − 1 week | Send grading sheets to CCs for resit | ☐ |
+| After resit week | Process new final grades in SAP. Update overview. Reply to CCs | ☐ |
+
+---
+
+## Section 4: Detailed Procedures
+
+### 4.1 Creating the Year Plan
+
+> 📌 Done once per year, in early spring. Takes approximately 1 hour. Access to J:\SSC required. Contact person: Anja Ronken.
+
+**Step 1 — Receive the Request Form**
+- In February, you receive an email from toetsen@maastrichtuniversity.nl
+- It includes the draft request form for exams for the next Academic Year
+- Deadline for submission: April
+- Form location: `J:\SSC\Planning toetsen\Aanvraagformulier toetsen`
+
+**Step 2 — Complete the Form**
+- Fill in the form based on the frame schedule for the next AY
+- Discuss the frame schedule with GO — needs to be provided by end of March
+- Within the frame schedule: everything in one block can be scheduled simultaneously
+- First preference = mandatory: Monday 9am (first block in frame)
+- Second preference = Monday afternoon
+- Total student numbers = estimate based on last year's enrolment for each course
+- **Column H:** indicate if exam is in TestVision (based on last AY — can change)
+
+**Step 3 — Submit the Form**
+- Email the completed form to toetsen@maastrichtuniversity.nl before the April deadline
+
+---
+
+### 4.2 Schedule Check (Qualtrics)
+
+> 📌 Done per period. Gathers exam format details from Course Coordinators. Note: can differ from the year plan overview. Access to Qualtrics required (personal login, via Lo-FSE).
+
+**Step 1 — Send Qualtrics Link to CCs**
+- Access: library.maastrichtuniversity.nl/apps-tools/qualtrics/
+- Send the link to all CCs with a clear deadline
+- **Midterm questions:** when does it take place, does it replace a teaching activity, duration, format
+- **Final exam questions:** format, allowed aids (MUST BE SPECIFIC: calculator model, A5 scrap, notes, etc.), open or closed book
+- No duration question for finals — UM policy is standard 2 hours
+
+**Step 2 — Process Qualtrics Responses**
+- Enter information into the exam overview document
+- **File (English):** `J:\FSE_MSP\Secretariat\OSA\13. Scheduling P4\2024-2025\Exams\Overview mid-terms and exams Period 4`
+- **File (Dutch, for Head Invigilators):** Toetsoverzicht MSP Final Exams P4 incl aantallen en bijzonderheden
+- **Column J** = allowed aids for each exam (provided to Head Invigilators)
+- File also records open/closed book status
+- Retrieve SPAR students: run ZPIQ_REP_MOD_SPAR in SAP
+  - Session codes: P1=100, P2=200, P4=400, P5=500
+  - Enter module code, execute, scroll right for SPAR details
+  - **If unclear:** run ZPIQ_REP_STUD_SPAR, execute, find student, scroll right for details
+- Below the schedule: track who you received answers from and whether they want an overview
+
+**Step 3 — Inform AR of Changes**
+- If anything changed vs. the year plan (exam format, frame schedule) — inform AR (Anja Ronken)
+- > ⚠️ **CHECK before sending. AR confirms if the change is possible. This is where rescheduling may happen.**
+
+---
+
+### 4.3 Inform Course Coordinators
+
+> 📌 Send at the start of each period. ALWAYS attach: (1) Cover Sheet for Exams and (2) Allowed Calculators List. See Section 7 for the full email template.
+
+**Step 1 — Prepare Attachments**
+- **Cover Sheet:** `J:\FSE_MSP\Secretariat\OSA\Exams\Email Templates & Attachments\CoverSheet Exam MSP.docx`
+- **Calculator List:** MSP Allowed Calculators List.pdf (same folder)
+
+**Step 2 — Send the Email**
+- Use the template in Section 7 of this manual
+- Address to: all P[X] Course Coordinators of FSE-MSP
+- Covers midterms, final written exams, and TestVision exams
+- **Submission deadline:** Monday, 2 weeks before exam week
+- **TestVision ready deadline:** same as above
+
+---
+
+### 4.4 Exam Schedule in Syllabus / S+
+
+> 📌 UM-wide system. Learn with a scheduler or another exam coordinator. Applies to both midterms and final exams. Syllabus ONLY works in Internet Explorer. Full detailed guidance is in Section 5 of this manual.
+
+**Step 1 — Enter the Schedule in Syllabus**
+- **URL:** http://syllabus.unimaas.nl/Scientia/Portal/Login.aspx (Internet Explorer only)
+- Before opening: run CleanEnterpriseProcessRebuildCERemoveImage from Education server
+- Log in with UM account. Select correct academic year. Open Enterprise Timetabler
+- Navigate to PROGRAMMES > year > semester > Courses > MSP
+- Refer to Section 5 (Syllabus Manual) for full step-by-step guidance
+- **Manual location:** `J:\FSE_MSP\Secretariat\OSA\Exams\manuals\manualsyllabus`
+
+**Step 2 — Publish the Schedule**
+- Publish on the UM-wide publication deadline — found in the UM Calendar
+- Use tag 'My Timetable' (not 'My draft Timetable') on the go-live date
+- Use 'Published' tag once per course on the first lecture where all students are allocated
+- > ⚠️ **Always Modify + Write Back (WB) after any change. After any change: always Unschedule then Reschedule — otherwise changes do not appear in Timetable.**
+
+---
+
+### 4.5 Create TestVision Folders
+
+> 📌 Only needed for courses that have never had a TestVision exam before. Existing courses already have folders. As new coordinator: contact DEXUM-UB@maastrichtuniversity.nl for access and training first.
+
+**Step 1 — Create Folders in TestVision**
+- **Login:** maastrichtuniversity.testvision.nl/online/developers/
+- **Tests Folder:** click three dots → New Folder → name as 'COURSECODE – Course Name' → OK
+- **Questions Folder:** same process — do for both
+
+**Step 2 — Link CC to the Folders**
+- Management → Developers and Domain → change 'link to role' to 'All Developers'
+- Click CC name → Roles → Add → select role CC → general role added
+- Click dropdown arrow next to CC → click plus → where it says 'top' click dropdown → MSP → specific course → Add
+- > ⚠️ **Do this for BOTH the Questions folder AND the Tests folder. This allows CCs to build their exams at any time without needing to request access later.**
+
+---
+
+### 4.6 Final Student Numbers
+
+> 📌 Submit final (non-SPAR) student numbers to Anja Ronken for room capacity planning at UM Sports.
+
+**Step 1 — Get SPAR Student Count per Course**
+- Run ZPIQ_REP_MOD_SPAR in SAP
+- Academic session: P1=100, P2=200, P4=400, P5=500
+- Enter module code, execute, scroll right to find SPAR count
+
+**Step 2 — Calculate and Submit Numbers**
+- **Number to submit** = Total enrolled students MINUS SPAR students
+- **Enter in column B:** `J:\FSE_MSP\Secretariat\OSA\13. Scheduling P4\2024-2025\Exams\Overview mid-terms and exams Period 4`
+- Copy columns A & B and paste into email to toetsen@maastrichtuniversity.nl
+
+---
+
+### 4.7 ESD Availability
+
+> 📌 ESD = Education Support Department (Heather for PHS, Gian for TestVision). No final exams and resits happen at the same time. Exam Coordinator goes to UM Sports but should also be at PHS to start resit day.
+
+**Step 1 — PHS ESD Briefing (Heather)**
+- Identify who is needed at PHS and when
+- Provide a detailed overview with specific times and locations per time slot
+- Mark any deviations in red
+- **Example file:** `J:\FSE_MSP\Secretariat\OSA\14. Scheduling P5\2024-2025\Exams\Surveillanten\Heather`
+
+**Step 2 — TestVision ESD Briefing (Gian)**
+- Identify who is needed at UNS50 and when
+- Provide overview with times, locations, and the TestVision exam checklist
+- **Example file:** `J:\FSE_MSP\Secretariat\OSA\14. Scheduling P5\2024-2025\Exams\Surveillanten\Gian`
+
+---
+
+### 4.8 Request Invigilators
+
+> 📌 Request at least 3 weeks in advance.  
+> **Who arranges what:**
+> - Anja Ronken (SSC): invigilators for final exams at UM Sports
+> - YOU (OSA/MSP): SPAR at PHS, SPAR at UNS50, all resits at PHS
+> - CCs: their own midterm invigilators
+
+**Step 1 — Log In and Create Request**
+- **Login:** https://surveillantenrooster.interum.eu/admin
+- Go to Tentamens → New → fill the form
+- > ⚠️ **Request per TIME SLOT and per LOCATION — not per individual exam.**
+- Usually 1 invigilator per SPAR room per time slot
+- **Timing:** Invigilator must be present 30 minutes BEFORE and 15 minutes AFTER the exam
+- **Remarks (Opmerkingen):** specify they report to B0.005
+- Budget number: available in the drop-down menu
+- Save and submit → you see an overview with status colour (yellow = pending, green = confirmed)
+
+**Step 2 — Track Completion**
+- Once names are confirmed, update your own Excel document to mark as done
+
+---
+
+### 4.9 Request and Check Exams from CCs
+
+> 📌 The first exam request was already made in the CC inform email (Procedure 4.3). This is the reminder and quality-check stage.
+
+**Step 1 — Send Reminder Email**
+- **Deadline:** Monday, 2 weeks before exam week
+- Reminder email must include: the deadline + the cover sheet attachment
+- See Section 7 for email template
+
+**Step 2 — Check Submitted Exams**
+- Cover sheet is present as the FIRST page of the exam
+- Enough writing/answering space throughout the exam
+- Two blank pages at the very end for extra answering space
+
+**Step 3 — Return Non-Compliant Exams**
+- If any check fails: send exam back to the CC
+- > ⚠️ **CC must return corrected version within 24 hours. The printing order goes out the DAY AFTER the submission deadline — no time to waste.**
+
+---
+
+### 4.10 Exam Printing Order (ANDIDRUK)
+
+> 📌 Only for final exams and SPAR final exams. NOT for resits (you print those yourself) or midterms (CCs print those themselves).  
+> ⚠️ **Exams must NOT be printed or transported by yourself. ANDIDRUK and UTS handle this entirely. No exceptions.**
+
+**Step 1 — Upload Exams to ANDIDRUK**
+- **Exam files:** `J:\FSE_MSP\Secretariat\OSA\13. Scheduling P4\2024-2025\Exams\Submitted Final Exams`
+- **Go to:** https://um.andi-printsolutions.com
+- Drag exam file from server to upload section. Repeat for each exam individually
+- **With the FIRST exam only:** also upload the transport overview
+- **Transport overview:** `J:\FSE_MSP\Secretariat\OSA\13. Scheduling P4\...\MSP Transport Overzicht logistics P4 - Andi + Anja`
+- Also email the transport overview to Anja Ronken / toetsen@maastrichtuniversity.nl
+
+**Step 2 — Complete ANDIDRUK Form for Each Exam**
+
+| Field | Value |
+|---|---|
+| Omschrijving | Course code |
+| Te bestellen aantal | Number of copies needed |
+| Sort | 'enkele niet' (from drop-down) |
+| Bedrukking | dubbelzijdig (double-sided, unless CC says otherwise) |
+| Eindformaat | A4 Staand |
+| Kleur | Kleuren Print |
+| Kleur Papier | Wit |
+
+> 📌 A3 format for the same exam must be done as a separate order. 'Volgende Stap' = proceed to next page.
+
+**Step 3 — Complete ANDIDRUK Delivery Details**
+
+| Field | Value |
+|---|---|
+| Toets(week)code | MSP + week number + year (e.g. MSP40-25) |
+| Afleveradres | FSE/MSP |
+| Aantal transportgangen Container | Number of times the cart moves between PHS and UM Sports (usually 4) |
+| Spoed | No |
+| Afleverdatum | Tuesday before exam week |
+| Afleverttijd | As early as possible |
+| Opmerkingen (productie) | Piles of 50 (standard is 60 but UM Sports blocks are 50) |
+| Levering | Leave blank |
+
+**Transport Logistics**
+- One exam cart = all exams for that day
+- Cart collected from Depot at 7am, taken to UM Sports
+- After exam: collected at time you arrange → brought to PHS (~30 min after UM Sports collection)
+- Next day's cart must also be ready at this point — it goes at the same time
+- **First collection:** Thursday or Friday of the week BEFORE exam week, around 3:30pm
+- > ⚠️ **Exam carts must be at UM Sports 90 minutes before exam start. Absolutely non-negotiable.**
+
+---
+
+### 4.11 Run and Send Grading Sheets
+
+> 📌 Full detailed grading manual is in Section 6 of this document.
+
+**Step 1 — Run Grading Sheets in SAP**
+- Use ZPIQ_EXPORT_APPR
+- **Full process in manual:** `J:\FSE_MSP\Secretariat\OSA\Exams\Manuals\Process description processing grades in SAP`
+
+**Step 2 — Email Grading Sheets to CCs**
+- > ⚠️ **Email to ALL course coordinators — including courses you do NOT arrange exams for. Also send to all practical coordinators.**
+- **Email template:** `J:\FSE_MSP\Secretariat\OSA\Exams\Email Templates & Attachments\Grading Sheets MAT2005 + Additional Information`
+- See Section 7 for full template
+
+---
+
+### 4.12 Run Attendance Sheets
+
+**Step 1 — Generate Attendance Sheets in SAP**
+- Transaction: ZPIQ_ATT_SHEET
+- Event type → * → Enter → select exam/course code
+- Change number of columns from 12 to 1
+- Execute. File saves to C:\temp (local computer, not SAP)
+
+**Step 2 — Format Attendance Sheets for UM Sports**
+- **SAP export location:** `J:\FSE_MSP\Secretariat\OSA\17. Attendance sheets\Exams\[AY]\P[X]\Final Exams\SMAT-[COURSECODE]-[AY]-Period [X]`
+- **Transfer to formatted sheet:** `J:\...\[COURSECODE]_Att sheets`
+- Second document has rows and chair numbers filled in (for fraud investigation if needed)
+- Also includes: UM Card check field, total sheet count, student signature
+- > 📌 Document is set up to print title boxes on every page — this is a Head Invigilator requirement.
+
+**Step 3 — SPAR Attendance Sheets**
+- For SPAR students: keep the raw SAP export as-is
+- **Column K:** if a student has a specific accommodation, enter it in Column K after the student signature
+
+---
+
+### 4.13 Prepare the Exam Carts
+
+> 📌 The key for the carts is in B2.007.
+
+**Step 1 — Load Exam Boxes (per exam, per block)**
+- Each box = one course in one block
+- One block can have multiple courses (multiple boxes). One large course can span multiple blocks
+- **Each box contains:** exams, 2 attendance sheets per block, counted scrap paper (enough per student per block)
+- Label each box with a sticker indicating what's inside (course code, block number)
+
+**Step 2 — Prepare Stationery Boxes**
+- One stationery box per block for invigilators at UM Sports
+- + 1 general box for the Head Invigilator
+- + 1 box for SPAR
+- **Each box contains:** 5 pens, 5 calculators, calculator list, stapler, staples, tape, marker, post-its, elastic bands, 2 plastic folders
+
+**Step 3 — Cardboard Box**
+- **Contents:** MSP signs, block numbers, block arrangements, block signs
+
+**Step 4 — Head Invigilator Folder**
+- Keep as a base — update per period with current period information
+
+**Step 5 — Attach Transport Overview**
+- Print the transport overview and tape it to the TOP of each exam cart
+
+**Step 6 — Additional Items**
+- Box with spare scrap paper in every cart
+- Box with calculators must also be in the cart
+
+---
+
+### 4.14 SPAR Exams — PHS and TestVision
+
+> 📌 SPAR students are usually all in one room = 1 box. If multiple rooms needed, prepare multiple boxes.
+
+**Step 1 — PHS SPAR Exam Box**
+- Exams (correct course, correct number for SPAR students)
+- Attendance sheets (include student accommodations listed after names)
+- WC phone number (+31 6 346 400 43)
+- Scrap paper (sufficient per student)
+- Irregularity report form
+- **Printed SPAR overview:** `J:\FSE_MSP\Secretariat\OSA\13. Scheduling P4\...\SPAR Toetsoverzicht MSP Final Exams P4`
+- Stationery box (pens, calculators, calculator list, stapler, staples, tape, marker, post-its, elastic bands, 2 folders)
+- Clock
+- Earplugs, laptop, or any other required accommodations (check per student in SPAR overview)
+
+**Step 2 — TestVision SPAR Exam Box (UNS50)**
+- Attendance sheets (TestVision SPAR students only)
+- Scrap paper
+- **Printed Password Reset Flyer:** `J:\FSE_MSP\Secretariat\OSA\Exams\passwordresetflyer`
+- **Printed UNS50 Checklist:** `J:\FSE_MSP\Secretariat\OSA\Exams\Checklist UNS50 TV Exams (OSA Support)`
+- **Printed SPAR overview:** same as above
+- Stationery box
+- Earplugs if any student requires them
+
+---
+
+### 4.15 Monitoring TestVision Exams
+
+> 📌 As new coordinator: contact DEXUM-UB@maastrichtuniversity.nl for platform access and training.
+
+**Step 1 — Set Up Session Monitoring**
+- **Login:** maastrichtuniversity.testvision.nl/online/developers/
+- On the home page: click 'Session Dashboard'
+- Click on the relevant session
+- Add the tests taking place
+
+**Step 2 — Monitor During Exam**
+- You have a live overview per student
+- **System error causes delay:** add extra minutes to the affected student's session directly from the dashboard
+
+---
+
+### 4.16 Closing TestVision Sessions
+
+> 📌 Goal: closing the session allows CCs to view and edit grading criteria after the exam.
+
+**Step 1 — Close the Sessions**
+- Dashboard → Sessions → find the corresponding period folder
+- You get an overview of all set-up exams
+- Switch off the slider AND click the X buttons to close each session
+
+---
+
+### 4.17 Midterm Procedure
+
+> 📌 CCs manage most of the midterm themselves: they print their own exams, provide their own invigilators, and organize in faculty buildings. Your job is limited to attendance sheets and a briefing email.
+
+**Step 1 — Run Attendance Sheets**
+- Run attendance sheets BEFORE the email goes out
+- Use ZPIQ_ATT_SHEET (same as Procedure 4.12)
+
+**Step 2 — Send Midterm Briefing Email to CCs**
+- **Send:** 1 week before the midterms
+- **Template:** `J:\FSE_MSP\Secretariat\OSA\Exams\Email Templates & Attachments\Attendance Sheets Midterm`
+- **Include:** attendance sheets, request for invigilator names, irregularity report form, WC phone number
+- **WC SMS number during midterm:** +31 6 346 400 43
+- OSA is available AT PHS during midterms to guide students to the toilet
+- Invigilator should print the irregularity form twice per room
+- Completed irregularity forms must be returned to OSA as the ORIGINAL (not a copy)
+- See Section 7 for email template
+
+---
+
+### 4.18 Resit Planning
+
+> 📌 Resit invigilators must be requested at least 3 weeks in advance. ESD coverage may be needed.
+
+**Step 1 — Draft Resit Schedule**
+- Create the schedule in Excel based on the frame schedule
+- **Example:** `J:\FSE_MSP\Secretariat\OSA\Exams\Overview Examples`
+- **Regular students:** B0.001
+- **SPAR students:** tutorial room(s)
+- **TestVision resits:** book a computer room
+- Check for SPAR students among resit students — specify them in the overview
+- After grades in, plan resits based on student numbers
+- Enter in Syllabus (same process as regular scheduling)
+
+**Step 2 — Register Resit Students in SAP (ZPIQ_MASS_EXAM)**
+- **Academic year** = FIRST year of the AY (e.g., 2024 for AY 2024-2025)
+- **Exam/resit period** = the period in which the COURSE took place — NOT the resit period
+- Example: course in P5, resit in P6 → enter P5
+- Module = course code
+- Students → Multiple Selection → paste student numbers → upload from clipboard → Execute
+- 'Register for exam/resit' is auto-ticked. UN-tick 'Test'. Execute → Close pop-up → Select all → Execute/Save
+- This creates an extra row in each student file for the new final grade
+- Now run attendance and grading sheets as per Procedures 4.11 and 4.12
+
+**Step 3 — One Week Before Resit Week**
+- Print: exams, attendance sheets (regular, SPAR, TV), block signs for lecture hall
+- Send grading sheets to CCs
+- **Template:** `J:\FSE_MSP\Secretariat\OSA\Exams\Email Templates & Attachments\Grading Sheets BIO2006 Resits + Additional Information`
+
+**Step 4 — Prepare Boxes**
+- Same box contents as Procedure 4.14 (SPAR Exams)
+- For regular resit students: B0.001
+
+**Step 5 — Process Resit Grades**
+- After resit week: process new final grades in SAP following the grading procedure (see Section 6)
+- Update the grading overview
+- Reply to CCs with new grade information
+- **Template:** `J:\FSE_MSP\Secretariat\OSA\Exams\RE Grading Sheet Resit P4`
+
+---
+
+## Section 5: Syllabus / S+ Scheduling Manual
+
+> 📌 Syllabus ONLY works in Internet Explorer. Before opening: always run CleanEnterpriseProcessRebuildCERemoveImage from the Education server.  
+> ⚠️ **Always Modify + Write Back (WB) to save changes. After any structural change: Unschedule → then Reschedule. If you don't, changes will not appear in MyTimetable.**
+
+### 5.1 System Overview
+
+- Login URL: http://syllabus.unimaas.nl/Scientia/Portal/Login.aspx
+- Login with your UM account and password
+- Select the correct academic year → click Enterprise Timetabler
+- The system loads slowly — wait for it to fully open
+
+### 5.2 Navigating to MSP Courses
+
+- PROGRAMMES folder → correct year → semester → Courses → MSP
+- Excel file in each folder contains overview of all courses + enrolled students
+
+### 5.3 Tabs in Activity Templates
+
+| Tab | Purpose |
+|---|---|
+| ID | Course information (name, duration, suggested time, day, planned size) |
+| User text & tags | Add extra info for students (user text 2 & 3). Add tags 'My Timetable' and 'Published' |
+| Planning | Group size, max students, create activities (use 'Make activities' button) |
+| Allocate | Assign students to tutorials. Double-click in 'activity' column or use 'Allocate' button |
+| Delivery & sequencing | Not normally used |
+| Resource | All rooms and spaces — check availability via Timetable view |
+| Pools | Not normally used |
+| Availability | Week overview — select which weeks this activity runs |
+
+### 5.4 Creating / Editing a Schedule Entry
+
+**Step 1 — Set Up Activity**
+- Find course in PROGRAMMES → select template → click Duplicate (do NOT overwrite the parent 'moeder' template)
+- ID tab: Duration (in 15-min increments), Day, Suggested time, Planned size (optional)
+- Give the activity a name (e.g. 'do 21.12')
+- Click Modify → then WB (Write Back) to save regularly
+
+**Step 2 — Set Availability (Weeks)**
+- Availability tab → select the weeks this activity runs (use Ctrl to multi-select)
+- To add a week not shown: click top-right box in ID screen → Availability: period (none) → extend weeks → Modify + WB
+
+**Step 3 — Assign Resources (Room + Staff)**
+- Resource tab → select lecturer (not all lecturers are in Syllabus — that's OK)
+- To check room availability: Timetable view (top right) → tick room → if no reservations shown, room is free
+- To find SBE rooms: choose SBE instead of CES/MSP top-left
+- > ⚠️ **SBE rooms can only be reserved max 2 weeks before block start.**
+- Select room → Modify + WB. Locations and staff must be on 'preset' status
+
+**Step 4 — Schedule the Activity**
+- Planning tab → double-click activity → Timetab → click grey block(s)
+- Diamond/rhombus symbol = constraints satisfied → click Schedule
+- If not: uncheck 'constraints' → choose time block → click Schedule → re-check constraints → WB
+- User text: add any field trip notes in user text 2/3
+- Tags: select 'My Timetable' on go-live date (UM-wide), 'My draft Timetable' before that
+- Select 'Published' ONCE per course on the first lecture where ALL students are allocated — this writes back to SAP
+
+**Step 5 — Allocate Students**
+- Allocate tab → double-click 'activity' column or use 'Allocate' button
+- For 2 groups: divide into upper and lower half of list → WB
+- > 📌 If a student has a grey box and cannot be allocated: go to Planning → Unschedule → allocate student → re-schedule.
+
+### 5.5 Making Changes to Existing Entries
+
+**Remove a Date**
+- Select correct template. Optionally rename it
+- Availability tab → remove the week using Ctrl
+- Planning → double-click activity → Timetab → Unschedule all → Reschedule
+- Check all remaining weeks are still showing. If not: re-schedule everything
+- SBE rooms: removed immediately. SSC rooms: remove via Outlook
+
+**Add a Date**
+- Select correct template. Optionally rename it
+- Availability tab → add the week using Ctrl
+- Planning → double-click activity → Timetab → Unschedule all → Reschedule
+- Check all weeks are correct. Don't forget to book the room for the new week!
+
+**All Other Changes**
+- Make the change, then always Unschedule → Reschedule. Otherwise it won't appear in Timetable
+- Remember to update the room as well if relevant
+
+### 5.6 Sharing Staff / Rooms Across Faculties
+
+**Sharing a Staff Member**
+- Timetabler → Staff → find lecturer in left column → Constraint → tick the correct faculty → Modify + WB
+
+**Sharing a Room**
+- Timetabler → Locations → select room → Constraints → tick faculty → Modify + WB
+
+### 5.7 Checking Room Availability (Quick Method)
+
+- In Timetable (read-only view): click Location View (top right)
+- Select individual rooms or entire buildings
+- Set view to Availability to quickly see what is free
+- > 📌 Timetable is read-only — you cannot book or change anything in Timetable. All bookings must be done in Syllabus/S+.
+
+### 5.8 Common Errors
+
+| Error | Solution |
+|---|---|
+| Program crashes / hangs | In Explorer: `C:/users/[username]/appdata/local/apps/2.0` → select folder → Shift + Delete + Enter (per IT advice) |
+| Student cannot be allocated (grey box) | Planning tab → Unschedule → allocate student → re-schedule |
+| Change not showing in MyTimetable | Always Unschedule → Reschedule after any change. Wait 10–20 min for MyTimetable to update |
+| Room not found | Check SBE as the owner (top-left dropdown) instead of MSP/CES |
+
+---
+
+## Section 6: SAP Grading Manual
+
+> 📌 Check and update this section once per year after the new EER and R&R has been set. Location: `J:\FSE_MSP\Secretariat\OSA\30. Procedures\BoE\R&R and EER`  
+> ⚠️ **CRITICAL ROUNDING RULE: Grades between 5.45 and 5.49 round DOWN to 5.4, which is a FAIL. Do not round up to 5.5.**
+
+### 6.1 General Grading Rules
+
+- All grades on a scale of 1–10, rounded to 1 decimal (nearest decimal)
+- Grades below 5.5 = fail on transcript
+- No participation OR missing partial assessment = NG (not graded) = fail on transcript
+- Sufficient overall grade + attendance fail = fail on transcript
+- Attendance 70–85%: student may compensate via additional assignment
+- CC deadline: 10 working days from Friday of exam week
+- OSA has 5 additional working days to process after CC deadline
+- OSA publishes final results in Student Portal within 15 working days after last exam date
+- Transcripts of all active students must be updated within 1 working day after final publication deadline
+- One working day after ALL grades come in: update all transcripts of all active students
+
+> 📌 In this section, 'course' includes practicals, projects, and theses.
+
+### 6.2 Reminder Schedule for Late Grades
+
+| When | Action |
+|---|---|
+| 1 day before CC's 10-working-day deadline | Send first reminder to CC |
+| 2–3 days after CC's deadline | Send second reminder to CC |
+| After final 15-working-day OSA publication deadline | OSA sends final reminder on behalf of Leon de Windt. Inform Leon and ask permission first |
+| Any late entries | Discuss with team and Board of Examiners — late grades affect other processes |
+
+### 6.3 Preparing the Grading File (ZPIQ_EXPORT_APPR)
+
+**Step 1 — Export Appraisals to Excel**
+- SAP transaction: ZPIQ_EXPORT_APPR
+- Fill: course code, academic year, period
+- Do NOT tick 'Exam Only'
+- Fill appraiser and appraisal date:
+  - For exams/resits arranged by OSA: use the exact exam date
+  - For all other courses (no exam/resit set by OSA): use the last Friday of exam week
+  - For RESIT period (P1, P2, P4, P5): for resits arranged by OSA = exact date; for others = last date of specific resit period
+- > ⚠️ **To update the appraiser (current grader), contact Eva Nelissen. See: `J:\FSE_MSP\Secretariat\OSA\30. Procedures\Appraiser`**
+- Execute → file saved to C:\TEMP
+- Copy CSV export file to applicable J-drive folder
+- Send email with instructions and deadline to CC. Attach: empty Excel sheet + SAP manual
+- **Email templates:** `J:\FSE_MSP\Secretariat\OSA\30. Procedures\Grades\First sit\e-mail templates`
+- **Instructions for CCs:** `J:\FSE_MSP\Secretariat\OSA\30. Procedures\Grades\First sit\Bijlages`
+
+### 6.4 Checking the Received Excel Sheet
+
+- Attendance column: must be P (pass), F (fail), or NG (not graded)
+- Grades column: must be rounded to 1 decimal
+- If incorrect: email CC with instructions on how to fill in the SAP file
+- **Save Excel file to:** J-drive applicable folder AND local desktop folder (import must be done from local location, not server)
+
+### 6.5 Importing Grades (ZPIQ_IMPORT_APPR)
+
+**Step 1 — Simulation Run First**
+- SAP transaction: ZPIQ_IMPORT_APPR
+- 'Input File': select Excel file from the DESKTOP folder (not server)
+- Leave 'Test' ticked → Execute (this is a simulation — no grades saved yet)
+- Review: if no errors and system confirms all grades processed successfully → proceed to step 2
+- > ⚠️ **If errors appear: correct the Excel file before proceeding.**
+
+**Step 2 — Official Run**
+- Untick 'Test' → Execute
+- This is the official run — grades are now processed and saved in SAP
+
+### 6.6 Calculating and Publishing Final Grades (ZPIQSMFU_CALC)
+
+**Step 1 — Run Grade Calculation**
+- SAP transaction: ZPIQSMFU_CALC
+- Fill course code. AY and session auto-fill
+- Click 'Students' → students appear
+- Click 'Attendance' → verify upload is correct
+- Click 'Grade Supervisor' → verify grades uploaded correctly
+- Click 'Final Result' → verify final results uploaded correctly
+- Select ALL students: top-left icon in table
+- Click calculator icon in menu bar (1)
+- Click 'Accord' (2) → 'Block' (3) → 'Save' (4)
+- Results are now published in the Student Portal
+- Update the resit overview
+
+### 6.7 Updating Individual Student Grades (ZPIQSTFU)
+
+> 📌 Use when a single student's grade changes later — for example, after an additional assignment or late grade submission.
+
+**Step 1 — Update a Single Student**
+- SAP transaction: ZPIQSTFU (Student follow-up, entry results)
+- Fill student number
+- Fill academic year and period → Search
+- Double-click on the course concerned
+- Adjust attendance AND grade in the 'Grade Symbol' column
+- Grade must be added to the 'Grade Supervisor' row
+- Select 'Final Result' line
+- Click calculator icon → select all lines (box next to description) → Accord → Block → Save
+- Results are now updated and published
+
+### 6.8 Downloading Partial Grades from Canvas
+
+**Step 1 — Export Partial Grades**
+- Canvas → SIS Imported courses → search and select course
+- Click 'Grades' → the gradebook appears
+- Click 'Actions' → Export → CSV file created
+- Open file from Downloads folder → select column A
+- If all data in one column: use Text to Columns → Delimited → Comma → Finish
+- Final grades column shows 2 decimals (percentage to grade). Paste in SAP/CSV file and round to 1 decimal
+- Save alongside the SAP import file in the course folder
+- > 📌 Check if partial grades are published in Canvas. If not: email CC to upload them.
+
+### 6.9 Processing File Locations
+
+| Document | Location |
+|---|---|
+| Grading procedures | `J:\FSE_MSP\Secretariat\OSA\30. Procedures\Grades` |
+| Appraiser update | `J:\FSE_MSP\Secretariat\OSA\30. Procedures\SAP\Appraiser` |
+| Canvas partial grades instructions | `J:\FSE_MSP\Secretariat\OSA\30. Procedures\Grades\Canvas` |
+| Email templates (first sit) | `J:\FSE_MSP\Secretariat\OSA\30. Procedures\Grades\First sit\e-mail templates` |
+| Tips for CCs filling SAP file (first sit) | `J:\FSE_MSP\Secretariat\OSA\30. Procedures\Grades\First sit\Bijlages` |
+| Tips for CCs filling SAP file (resit) | `J:\FSE_MSP\Secretariat\OSA\30. Procedures\Grades\Resits` |
+| Actual grades archiving / empty SAP import file | `J:\FSE_MSP\Secretariat\OSA\...\Grades` |
+| Resit overview file for scheduler | `J:\FSE_MSP\Secretariat\OSA\...\Grades\2021-2022` |
+| Transcript update procedure | `J:\FSE_MSP\Secretariat\OSA\30. Procedures\SAP\Transcript` |
+| SAP manuals on Confluence | https://maastrichtuniversity.atlassian.net/l/c/RGDLn03M |
+
+---
+
+## Section 7: Email Templates
+
+> 📌 Update all dates, period numbers, and course codes in [brackets] before sending. All outgoing exam emails should be sent from msp-exams@maastrichtuniversity.nl.
+
+### 7.1 Inform Course Coordinators (Start of Period)
+
+> 📌 Attach: Cover Sheet for Exams + Allowed Calculators List. Update all dates and period numbers before sending.
+
+---
+
+Dear P[X] Course Coordinators of FSE-MSP,
+
+I am reaching out to provide you with some information regarding the organization of midterms and final exams.
+
+**MIDTERMS**
+
+- Midterms have been scheduled in MyTimetable (if you have informed us about wanting one). Please check it and let me know if you have questions.
+- Midterms will be organized as they have always been:
+  - Scheduled within faculty buildings
+  - Invigilators need to be arranged by yourselves
+  - Exams need to be printed by yourselves
+
+**FINAL WRITTEN EXAMS ON PAPER**
+
+- You can find the exam schedule in MyTimetable. Please check it and let me know if you have questions.
+- Invigilators are arranged via InterUM. You do not need to arrange them, nor be present at UM Sports.
+- Students cannot ask content questions during the exam — please triple-check your exam before it is printed.
+- All written exams will be printed externally by Andi Smart Print Solutions and transported (secured) to the exam location by UTS. Self-printing or self-transporting is not permitted.
+- Please submit your final exam to OSA by email no later than: **[DATE — Monday 2 weeks before exam week]**
+- SPAR students will be scheduled at PHS1. Invigilators arranged — no need to be present.
+- Important reminders:
+  - Please use the Cover Sheet for Exams as the basis for your exam (attached)
+  - Update all details (exam name and current academic year) throughout the document
+  - Students bring their own MSP-approved calculator (we can offer one if needed)
+  - Open Book Exam: students can only bring paper documents; no internet access
+  - Include formula sheets within the exam itself
+  - Integrate answering space within the exam. No extra paper will be handed out (except scrap paper)
+  - **Add 2 extra blank pages at the end as extra answering space**
+
+**FINAL EXAMS IN TESTVISION**
+
+- You can find the exam schedule in MyTimetable. Please check it and let me know if you have questions.
+- Invigilators are arranged via InterUM. You do not need to be present at UM Sports.
+- Students cannot ask content questions — please triple-check your exam before it is published.
+- TestVision exams take place on Chromebooks at UM Sports. Students only have access to TestVision.
+- Please enter the test yourself to make optimal use of TestVision's possibilities. If unfamiliar with TestVision, take the intro course: https://maastrichtuniversity.instructure.com/enroll/NGLGTC
+- Please have your exam ready in TestVision no later than: **[DATE — same deadline as paper exams]**
+- SPAR students will be at computer rooms at UNS50. Invigilators arranged — no need to be present.
+- Important reminders:
+  - Update all details (exam name and current academic year)
+  - Students bring their own MSP-approved calculator
+  - Open Book Exam: paper documents only, no internet
+  - Include formula sheets within TestVision
+
+If you have any questions, please let us know.
+
+Kind regards,  
+[Your name]  
+Maastricht Science Programme | Office of Student Affairs
+
+---
+
+### 7.2 Grading Sheets — First Sit
+
+> 📌 Send to ALL CCs, including those whose exams you do not arrange. Also send to all practical coordinators.
+
+---
+
+Dear [Name],
+
+This email consists of 2 attachments: the SAP export/import file and 'Tips and instructions how to fill in the SAP grade file'.
+
+We hereby shortly explain how to submit grades to the MSP Office of Student Affairs (OSA):
+
+- Please fill out the completed SAP export/import file (attendance in column D, final grades in column F).
+- Upload all partial grades on CANVAS and indicate which students are entitled to a resit (in accordance with article 15.5 of the Rules & Regulations of the MSP).
+- For more information, please check the instruction video or use the online manual on how to use the gradebook in CANVAS.
+
+The deadline for the aforementioned actions is: **[DATE — Monday 2 weeks after exam Friday]**
+
+Please check the attached instructions document for more information about the SAP grading file and Canvas gradebook.
+
+Please note that, according to article 5.9 of the EER, students may inspect their evaluated work within 10 working days of the date on which the result is announced in Student Portal by OSA. It would be appreciated if you could proactively inform your students about the exam inspection.
+
+Exams can be collected at PHS1 B2.007 during the following time slots:
+- [Day] [Date] from [time] – [time]
+- [Day] [Date] from [time] – [time]
+
+Finally, the Submission Deadline for P[X] Resit Exams is [DATE]. Please submit your resit exam no later than this date.
+
+If you have any questions, just let me know.
+
+Kind regards,  
+[Your name]  
+Maastricht Science Programme | Office of Student Affairs
+
+---
+
+### 7.3 Grading Sheets — Resit
+
+---
+
+Dear [Name],
+
+Please find the resit grading sheet attached, including all students eligible for your P[X] resit.
+
+Please fill out the completed SAP export/import resit file (attendance in column D and final (new) grades in column F).
+
+Make sure to:
+- Fill in an **NG** for those students that were **NOT** present during the resit
+- Fill in the **NEW** final grade after the resit
+- Fill in the NEW final grade even if this grade is lower than the original final grade
+
+The deadline for submitting the new final grades after the resit is: **[DATE]**
+
+Finally, Resit Exams can be collected at PHS1 B0.005 during the following time slots:
+- [Day] [Date] from [time] – [time]
+- [Day] [Date] from [time] – [time]
+
+Next week at PHS B2.007:
+- Monday/Tuesday/Thursday/Friday from 09:00 – 16:00
+
+If you have any questions/comments, feel free to contact me.
+
+Best,  
+[Your name]  
+Maastricht Science Programme | Office of Student Affairs
+
+---
+
+### 7.4 Reply: Grades Received and Published
+
+---
+
+Dear [Name],
+
+Thank you for sending the grades.
+
+I have just published the grades, so students should have access to their final grade via their Student Portal.
+
+According to article 5.9 of the Education and Examination Regulations (EER) of the Maastricht School of Liberal Arts and Sciences, students may inspect their evaluated work within 10 working days of the date on which the result of a written exam (including a computer-based exam) is announced in Student Portal by the Office of Student Affairs.
+
+For this practical/course, this means that students have until **[DATE]** to inspect their evaluated work. It would be great if you could actively inform your students about this.
+
+The [COURSE CODE] Resit Exam will take place on **[DAY DATE]** from **[TIME] – [TIME]**. There is no need for you to be present during the resit, as invigilators will be arranged by us.
+
+Please submit the resit exam no later than **[DATE]**.
+
+The students eligible for the resit have been registered. They will see the resit in their Timetable within 30 minutes.
+
+If you have any questions, just let us know.
+
+Best,  
+[Your name]  
+Maastricht Science Programme | Office of Student Affairs
+
+---
+
+### 7.5 Attendance Sheets — Midterm
+
+> 📌 Send 1 week before midterms. Include: attendance sheets, irregularity report form, WC phone number.
+
+---
+
+Dear [Name],
+
+Attached you will find the attendance sheets for the midterm and the Irregularity Report Form.
+
+We hereby shortly explain the procedure regarding the Irregularity Report Form:
+
+- Please print the attached Irregularity Report Form twice per exam room and provide the invigilators with the forms.
+- If an irregularity is suspected during an exam, please fill out the form directly on the spot.
+- Provide the filled-out form to OSA using the **ORIGINAL** Irregularity Report Form.
+
+During the midterm, OSA will be available at PHS to guide students to the toilet to decrease the possibilities of fraud.
+
+The invigilators/you can send a TEXT message (i.e. SMS) to the following number if a student needs to go to the toilet: **+31 6 346 400 43**
+
+Could you also let us know the name(s) of the invigilator(s) who will be present during the midterm?
+
+If you have any remarks/questions, just let us know.
+
+Kind regards,  
+[Your name]  
+Maastricht Science Programme | Office of Student Affairs
+
+---
+
+### 7.6 Student Email — Exam Week Information (UM Sports)
+
+> 📌 Send approximately 1 week before exam week. Attach: Rules of Procedure, USC exam location info, Allowed Calculators List, General Hall Arrangements, Block Arrangement PDFs.
+
+---
+
+Dear student,
+
+In about a week from now, the exam week of Period [X] ([DATES]) will take place.
+
+The information below contains important information for **ALL students!** (If any other arrangement like special exam arrangements should apply to you personally, you will receive a separate email.)
+
+In principle, all MSP exams will take place at UM Sports (as shown in your Timetable). Enter via the main entrance.
+
+Enclosed you will find:
+- The Rules of Procedure
+- Information about UM Sports as an exam location
+- Hall arrangements of MSP exams (fuchsia blocks indicate MSP exams)
+- Specific block arrangements (which exam takes place in which block)
+- The MSP list of allowed calculators
+
+**FOR ALL STUDENTS — PLEASE READ CAREFULLY:**
+
+- You can only participate if you can show your UM-card or passport/official ID at the START of your exam (no scan or photo). Keep your student ID on your table for the entire exam.
+- Ask your lecturer beforehand if a calculator is allowed. If so, make sure to bring one! If only simple calculators are allowed, choose from the attached list.
+- For each exam: you cannot be even 1 minute late. Doors close exactly at starting time.
+- Follow the fuchsia signs mentioning MSP and find your block to be seated.
+- You can bring a jacket and a bag. Both must fit entirely UNDER your own exam table.
+- Food is NOT allowed. Drinks in a bottle or cup with a lid that can be closed are fine.
+- Toilet: raise your hand and wait for the invigilator to give you a 'toilet pass'. Max ONE toilet visit per 2-hour exam. Not in the first or last 30 minutes.
+- Electronic devices of any kind are not allowed (watches, earphones, headphones, hats, phones).
+- Any fraud attempt will be reported by an irregularity report to the Board of Examiners.
+- You may not leave before 30 minutes after the start of the exam.
+- Once you receive your exam: read the front page, write your name and student ID on the cover sheet.
+
+**DIGITAL EXAMS (TestVision):**
+
+- You will take your digital exam on a Chromebook set up at the exam location.
+- Log in immediately when seated!
+- You need to log in with your own UM credentials (UM username and password). Make sure your account is active before the exam day.
+- More information: https://library.maastrichtuniversity.nl/study/digital-exams/
+
+If you have any questions, please do not hesitate to contact me.
+
+Wishing you good luck on your exams,  
+[Your name]  
+Maastricht Science Programme | Office of Student Affairs
+
+---
+
+### 7.7 Student Email — SPAR Special Arrangements
+
+> 📌 Send to SPAR students at the same time as the general student email. BCC all SPAR students.
+
+---
+
+Dear student (SPAR),
+
+You are entitled to take your exams under special exam conditions. **These exams do NOT take place at UM Sports!**
+
+The email about UM Sports exams (sent to all students) contains important information for ALL students — please read it carefully.
+
+- Electronic devices of any kind are not allowed (watches, earphones, headphones, hats, phones, etc.).
+- Any type or attempt of fraud will be reported by an irregularity report sent to the Board of Examiners.
+- Once you receive your exam: read the front page thoroughly, write your name AND student ID number on the front page.
+
+Please be in time for the exam — 10 to 15 minutes earlier than the actual start. Check your timetable. For each exam: you cannot be even 1 minute late. Doors close exactly at starting time.
+
+**LOCATION OF EXAMS FOR STUDENTS WITH SPECIAL EXAM CONDITIONS:**
+
+Depending on whether your exam is pen-and-paper or digital, your location is different.
+
+**Pen-and-paper exams:** PHS1 (Paul-Henri Spaaklaan 1). Check your Timetable for the specific room.
+
+**Digital exams:** UNS50 (Universiteitssingel 50), at the 'Computerlandschap' of faculty FHML. Enter UNS50 via the main entrance (South side), first door left and then first door right. An invigilator will meet you there.
+
+**DIGITAL EXAMS — IMPORTANT:**
+
+- Log in with your own UM credentials (UM username and password).
+- Make sure your account is active before the exam day.
+- More information: https://library.maastrichtuniversity.nl/study/digital-exams/
+
+If you have any questions, please do not hesitate to contact me.
+
+Wishing you all good luck,  
+[Your name]  
+Maastricht Science Programme | Office of Student Affairs
+
+---
+
+## Section 8: Physical Checklists
+
+### 8.1 Exam Cart Checklist (UM Sports)
+
+**Per Exam Box (one per course per block)**
+- ☐ Exams — correct course, correct number of copies
+- ☐ Attendance sheets — 2 per block
+- ☐ Counted scrap paper — sufficient per student in that block
+- ☐ Label/sticker on box identifying course and block
+
+**Per Block Stationery Box**
+- ☐ 5 pens
+- ☐ 5 calculators
+- ☐ Overview of allowed calculator list
+- ☐ Stapler
+- ☐ Staples
+- ☐ Tape
+- ☐ Marker
+- ☐ Post-its
+- ☐ Elastic bands
+- ☐ 2 plastic folders
+
+**General Cardboard Box**
+- ☐ MSP signs
+- ☐ Block numbers
+- ☐ Block arrangements
+- ☐ Block signs
+
+**Head Invigilator Folder**
+- ☐ Updated for current period
+- ☐ Contains correct exam overview (Toetsoverzicht)
+
+**Cart Itself**
+- ☐ Transport overview taped to the top of the cart
+- ☐ Box with spare scrap paper
+- ☐ Box with calculators
+- ☐ Cart key returned to B2.007 after loading
+
+---
+
+### 8.2 SPAR Box Checklist — PHS
+
+- ☐ Exams (correct course, correct number for SPAR students)
+- ☐ Attendance sheets (with student accommodations listed after names)
+- ☐ WC phone number (+31 6 346 400 43)
+- ☐ Scrap paper (sufficient per student)
+- ☐ Irregularity report form
+- ☐ Printed SPAR overview (Toetsoverzicht)
+- ☐ Stationery box (pens, calculators, calculator list, stapler, staples, tape, marker, post-its, elastic bands, 2 folders)
+- ☐ Clock
+- ☐ Earplugs (if any student requires them)
+- ☐ Laptop (if any student requires it)
+- ☐ Any other required accommodations (check per student in SPAR overview)
+
+---
+
+### 8.3 SPAR Box Checklist — TestVision (UNS50)
+
+- ☐ Attendance sheets (TestVision SPAR students only)
+- ☐ Scrap paper
+- ☐ Printed Password Reset Flyer
+- ☐ Printed UNS50 TestVision Checklist
+- ☐ Printed SPAR overview (Toetsoverzicht)
+- ☐ Stationery box (same as regular exams)
+- ☐ Earplugs (if any student requires them)
+
+---
+
+### 8.4 On-Day Checklist — TestVision at UNS50
+
+**Before Exam Start (be ready 15 minutes before)**
+- ☐ Computers started and ready
+- ☐ Invigilator briefed and present
+- ☐ Students entering: UM card / ID / Passport checked
+- ☐ Attendance sheets being ticked as students arrive
+- ☐ Students told to log in immediately
+- ☐ Bags and coats under table or at front of room
+- ☐ Scrap paper ready to distribute right after exam starts
+
+**During Exam**
+- ☐ Invigilator walking through the room (not between rows)
+- ☐ Toilet procedure communicated: invigilator calls exam support colleague to escort student (max 2 times per exam)
+- ☐ Any login issues: use Password Reset Flyer. Login: `FSETVS` / `!@#FSEtestvspec`
+- ☐ Computer issues: move student to new computer WITHOUT logging out of broken one first
+
+**After Exam**
+- ☐ Log out of TestVision: password `Quit&quit!`
+- ☐ Sign out of computers normally
+- ☐ Collect attendance sheets
+- ☐ Return all materials to OSA
+
+---
+
+## Section 9: Operational Templates
+
+> 📌 Print these templates and place them in the relevant boxes or locations before exam day. Update all [bracketed] fields before printing.
+
+### 9.1 Regular Student Exam Instruction Sheet
+
+> 📌 Print one per exam/block. Place in each exam box for the invigilator.
+
+| Field | Value |
+|---|---|
+| **EXAM INFORMATION — [COURSE CODE] – [COURSE TITLE]** | |
+| Tijdslot / Time Slot | [exam time slot] |
+| Locatie / Location | [Location] |
+| Hoofd-Surveillant / Head Invigilator | [Head invigilator] |
+| Block | [block numbers] |
+| Aantal studenten / # Students | [number of students] |
+| Attendance Sheets in Doos | 2 |
+| Soort Toets / Type | [Closed Book / Open Book / TestVision] |
+| Toegestane Hulpmiddelen / Allowed Aids | [Any calculator / A5 scrap paper / notes etc.] + Scrap paper |
+
+---
+
+### 9.2 SPAR Invigilator Instruction Sheet
+
+> 📌 Print this and place it in the SPAR box. Update [COURSE CODE], [AIDS], and [TIME] before printing.
+
+**[COURSE CODE] — [COURSE TITLE] — SPAR EXAM INSTRUCTIONS**
+
+**BEFORE EXAM START**
+- ☐ Check student UM cards and tick column 1 of the attendance sheet. If a student is NOT on the list: write down their ID number and name below the list and let them take the exam.
+- ☐ All students must put phones in their bags and leave bags at the front of the room.
+- ☐ Students must remove their watches.
+- ☐ At [EXAM START TIME]: distribute exams + 3 pieces of yellow scrap paper.
+- ☐ Ensure one empty seat between each exam taker.
+
+**ALLOWED AIDS FOR [COURSE CODE]: [LIST AIDS HERE]**
+
+**AFTER EXAM**
+- ☐ Students sign the attendance form before leaving.
+- ☐ Collect all exams in one pile. Check collected exams match student signatures.
+- ☐ Collect all scrap paper in one pile.
+- ☐ Bring all material (exams, scrap paper, attendance sheets) to PHS B0.005.
+
+**IMPORTANT NOTES**
+- Provide scrap paper if requested
+- Students can go to the toilet max 2 times
+- If a rule violation occurs: fill out the irregularity report form immediately on the spot
+- **WC support:** send SMS to +31 6 346 400 43
+
+---
+
+### 9.3 SPAR Overview Template
+
+> 📌 Fill in one row per exam time slot. This overview is provided to the invigilator and goes in the SPAR exam box.
+
+| Name / Course | Start Time | End Time | Location | #Stud | CC | SPAR Accommodations | Invigilator |
+|---|---|---|---|---|---|---|---|
+| **DATE →** | | | | | | | |
+| Final Exam / [COURSE CODE] | 09:00 | 11:30 | PHS B1.002 | [n] | [CC name] | STUDENTS LISTED BY SURNAME, STUDENT ID AND ACCOMMODATION | [Invigilator] |
+
+---
+
+### 9.4 Password Reset Flyer (TestVision)
+
+> 📌 This flyer is produced by ICTS. Print from: `J:\FSE_MSP\Secretariat\OSA\Exams\passwordresetflyer`. Always include in the TV SPAR exam box and at the UNS50 exam location. Students can also be directed to ICTS support at the front of the hall with their UM card and phone.
+
+**TestVision Login Credentials (UNS50 SPAR exams)**
+
+| | |
+|---|---|
+| Login username | `FSETVS` |
+| Login password | `!@#FSEtestvspec` |
+| Quit password (after exam) | `Quit&quit!` |
+
+- If student cannot log in: use the Password Reset Flyer from the box
+- If problem persists: guide to ICTS support at front of hall. Student must bring UM card and mobile phone
+- Computer issue during exam: move student to new computer WITHOUT logging out of the broken one first — then the student can continue
+
+---
+
+*End of Manual*  
+*For questions or corrections, contact the MSP Office of Student Affairs*  
+msp-btr@maastrichtuniversity.nl | msp-exams@maastrichtuniversity.nl
