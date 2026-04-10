@@ -143,7 +143,7 @@ export function Sidebar() {
         <Image src="/um-logo.png" alt="Maastricht University" width={150} height={36} className="h-6 w-auto object-contain opacity-70" />
         <div className="mt-3 label-caps !text-[9px] !tracking-[0.14em] leading-relaxed text-[var(--um-gray-400)]">
           Faculty of Science & Engineering<br />
-          PHS B0.005 · 2025–2026
+          2025–2026
         </div>
       </div>
     </>
