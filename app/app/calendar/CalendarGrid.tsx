@@ -140,10 +140,13 @@ function MonthGrid({
                   ? "ring-2 ring-[var(--brand)] shadow-[var(--shadow-md)]"
                   : hasItems
                     ? "ring-1 ring-[var(--brand)]/20"
-                    : isToday ? "ring-2 ring-[var(--brand)]/40" : ""}
+                    : ""}
               `}
             >
               <span className="absolute top-2 left-0 right-0">{format(day, "d")}</span>
+              {isToday && !hasItems && (
+                <span className="absolute bottom-1.5 left-1/2 -translate-x-1/2 h-1 w-1 rounded-full bg-[var(--um-orange)]" />
+              )}
               {hasItems && (
                 <div className="absolute bottom-1.5 left-1.5 right-1.5 flex items-center justify-center gap-1">
                   {uniqueKinds.slice(0, 4).map(kind => (
