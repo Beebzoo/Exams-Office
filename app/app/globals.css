@@ -1,0 +1,321 @@
+@import "tailwindcss";
+
+:root {
+  /* === UM brand palette === */
+  --um-dark-blue: #001C3D;
+  --um-darker-blue: #00101f;
+  --um-light-blue: #00A2DB;
+  --um-light-blue-glow: rgba(0, 162, 219, 0.4);
+  --um-orange: #E84E10;
+  --um-orange-glow: rgba(232, 78, 16, 0.4);
+  --um-off-white: #fafbfc;
+
+  /* Gray scale */
+  --um-gray-50:  #f8fafc;
+  --um-gray-100: #f1f5f9;
+  --um-gray-200: #e2e8f0;
+  --um-gray-300: #cbd5e1;
+  --um-gray-400: #94a3b8;
+  --um-gray-500: #64748b;
+  --um-gray-600: #475569;
+  --um-gray-700: #334155;
+  --um-gray-800: #1e293b;
+
+  /* === Semantic tokens used across the app === */
+  --background: var(--um-off-white);
+  --foreground: var(--um-dark-blue);
+  --card: #ffffff;
+  --card-elev: #ffffff;
+  --border: var(--um-gray-200);
+  --border-strong: var(--um-gray-300);
+  --muted: var(--um-gray-500);
+
+  --brand: var(--um-dark-blue);
+  --brand-2: var(--um-darker-blue);
+  --brand-soft: #e6f1fa;     /* very pale UM blue */
+
+  --accent: var(--um-light-blue);
+  --accent-soft: #e0f4fb;
+
+  --cta: var(--um-orange);
+  --cta-soft: #fdece4;
+
+  --warn: #b45309;
+  --warn-soft: #fef3c7;
+  --danger: #b91c1c;
+  --danger-soft: #fee2e2;
+  --success: #15803d;
+  --success-soft: #dcfce7;
+
+  --shadow-sm: 0 1px 2px rgba(0, 28, 61, 0.04), 0 1px 3px rgba(0, 28, 61, 0.06);
+  --shadow-md: 0 4px 14px -2px rgba(0, 28, 61, 0.10), 0 2px 6px -1px rgba(0, 28, 61, 0.06);
+  --shadow-lg: 0 22px 50px -14px rgba(0, 28, 61, 0.22);
+  --glow-blue: 0 0 30px var(--um-light-blue-glow);
+  --glow-orange: 0 0 30px var(--um-orange-glow);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-brand: var(--brand);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-cta: var(--cta);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--um-darker-blue);
+    --foreground: #eef4fb;
+    --card: #082040;
+    --card-elev: #0d2a52;
+    --border: #163058;
+    --border-strong: #1f3e6c;
+    --muted: #94a3b8;
+
+    --brand: var(--um-light-blue);
+    --brand-2: #4dbfe8;
+    --brand-soft: #062847;
+
+    --accent: var(--um-light-blue);
+    --accent-soft: #062847;
+
+    --cta: #ff7a47;
+    --cta-soft: #3a1808;
+
+    --warn-soft: #3a2607;
+    --danger-soft: #3b0d0d;
+    --success-soft: #0a2a17;
+
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+    --shadow-md: 0 4px 14px -2px rgba(0,0,0,0.55);
+    --shadow-lg: 0 22px 50px -14px rgba(0,0,0,0.75);
+  }
+}
+
+html, body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Cozy ambient background — soft UM blue + faint orange warmth */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(0, 162, 219, 0.08), transparent 55%),
+    radial-gradient(circle at 85% 100%, rgba(232, 78, 16, 0.05), transparent 55%),
+    radial-gradient(circle at 50% 50%, rgba(0, 28, 61, 0.025), transparent 70%);
+  z-index: -1;
+}
+
+/* Nice scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+.fade-up { animation: fade-up .4s ease both; }
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 var(--um-light-blue-glow); }
+  50%      { box-shadow: 0 0 0 8px transparent; }
+}
+
+/* === Editorial / scientific journal type === */
+
+.font-display {
+  font-family: var(--font-display), "Times New Roman", Georgia, serif;
+  font-variation-settings: "opsz" 144, "SOFT" 30, "WONK" 0;
+  letter-spacing: -0.035em;
+  font-feature-settings: "lnum", "ss01";
+}
+
+.font-display-italic {
+  font-family: var(--font-display), Georgia, serif;
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  font-style: italic;
+  letter-spacing: -0.02em;
+}
+
+.label-caps {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--muted);
+  font-feature-settings: "tnum";
+}
+
+.section-marker {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--um-orange);
+  font-weight: 500;
+  font-feature-settings: "tnum";
+}
+
+.hairline {
+  border-top: 1px solid var(--um-dark-blue);
+}
+.hairline-soft {
+  border-top: 1px solid var(--um-gray-300);
+}
+
+/* Grain overlay — applied to hero. SVG noise data-URI. */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Editorial card: sharp top hairline, no rounded corners on top */
+.editorial-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--um-dark-blue);
+  border-radius: 0;
+  position: relative;
+}
+
+@keyframes stagger-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+.stagger > * { opacity: 0; animation: stagger-in 0.7s cubic-bezier(0.2, 0.7, 0.3, 1) forwards; }
+.stagger > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger > *:nth-child(2) { animation-delay: 0.15s; }
+.stagger > *:nth-child(3) { animation-delay: 0.25s; }
+.stagger > *:nth-child(4) { animation-delay: 0.35s; }
+.stagger > *:nth-child(5) { animation-delay: 0.45s; }
+.stagger > *:nth-child(6) { animation-delay: 0.55s; }
+
+/* Vertical running text used as a magazine-style margin label */
+.running-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+/* CTA button class — orange, glow-on-hover */
+.btn-cta {
+  background: var(--cta);
+  color: white;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.btn-cta:hover {
+  filter: brightness(1.08);
+  box-shadow: var(--glow-orange);
+  transform: translateY(-1px);
+}
+
+@media print {
+  nav, .no-print { display: none !important; }
+  body { background: white !important; color: black !important; font-size: 11pt; }
+  body::before { display: none; }
+
+  /* Reset layout for print — full width, no sidebar margin */
+  .flex.min-h-screen { display: block !important; }
+  main { padding: 0 !important; max-width: 100% !important; }
+
+  /* No animations */
+  .stagger > *, .fade-up { animation: none !important; opacity: 1 !important; transform: none !important; }
+
+  /* Page margins */
+  @page {
+    size: A4;
+    margin: 1.5cm 1.8cm;
+  }
+
+  /* Checklist-specific print styles */
+  .print-checklist-title {
+    font-size: 18pt;
+    font-weight: 700;
+    color: black;
+    border-bottom: 2pt solid black;
+    padding-bottom: 6pt;
+    margin-bottom: 12pt;
+    break-after: avoid;
+  }
+
+  .print-group-title {
+    font-size: 10pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #333;
+    border-bottom: 0.5pt solid #999;
+    padding-bottom: 3pt;
+    margin-top: 14pt;
+    margin-bottom: 6pt;
+    break-after: avoid;
+  }
+
+  .print-item {
+    font-size: 10pt;
+    line-height: 1.6;
+    padding: 2pt 0;
+    border-bottom: 0.5pt dotted #ccc;
+    break-inside: avoid;
+    display: flex;
+    align-items: flex-start;
+    gap: 6pt;
+  }
+
+  .print-checkbox {
+    display: inline-block;
+    width: 12pt;
+    height: 12pt;
+    border: 1.5pt solid #333;
+    border-radius: 1pt;
+    margin-top: 2pt;
+    flex-shrink: 0;
+  }
+
+  /* Force page break between checklists */
+  .print-page-break {
+    break-before: page;
+  }
+
+  /* Credentials card */
+  .print-credentials {
+    margin-top: 16pt;
+    border: 1pt solid #333;
+    padding: 10pt;
+    font-family: monospace;
+  }
+
+  /* Hide interactive elements */
+  button, input[type="checkbox"] { display: none !important; }
+
+  /* Show print-only elements (hidden on screen via .hidden) */
+  .hidden.print-only { display: block !important; }
+
+  /* Section markers in print */
+  .section-marker { color: #666 !important; }
+  .font-display { letter-spacing: -0.02em; }
+}
