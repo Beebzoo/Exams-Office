@@ -92,7 +92,7 @@ export function ChatBot() {
                   Assistant<span className="text-[var(--um-orange)]">.</span>
                 </div>
                 <div className="text-[10px] uppercase tracking-[0.18em] text-white/50 mt-1">
-                  {isFallback ? "search mode" : "powered by claude"}
+                  {isFallback ? "search mode" : "AI mode"}
                 </div>
               </div>
             </div>
